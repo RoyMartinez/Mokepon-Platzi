@@ -27,8 +27,8 @@ function start ()
     //ocultamos las secciones posteriores de nuestro juego
     let seleccionarAtaque = document.getElementById('seleccionar-ataque')
     let reiniciar = document.getElementById('reiniciar')
-    reiniciar.style.display = 'none'
-    seleccionarAtaque.style.display = 'none'
+    reiniciar.style.display = 'none';
+    seleccionarAtaque.style.display = 'none';
 
     //Seleccionamos los elementos de nuestro html
     let mascotaJugador = document.getElementById('btn-mascota-jugador')
