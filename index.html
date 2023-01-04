@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mokepon!</title>
+    <link rel="stylesheet" href="./Styles.css">
+</head>
+<body>
+    <section id="seleccionar-mascota">
+        <h1 class="titulo">Mokepon! 🌱, 🔥, 💧</h1>
+
+        <h2 class="subtitulo">Selecciona la Mascota:</h2>
+
+        <div class="tarjetas">
+            <input type="radio" name="mascota" id="Hipodoge">
+            <label class="tarjeta-de-mokepon" for="Hipodoge">
+                <p>Hipodoge</p>
+                <img src="/Src/assets/mokepons_mokepon_capipepo_attack.webp" alt="Hipodoge">
+            </label>
+    
+            <input type="radio" name="mascota" id="Capipepo">
+            <label class="tarjeta-de-mokepon" for="Capipepo">
+                <p>Capipepo</p>
+                <img src="/Src/assets/mokepons_mokepon_hipodoge_attack.webp" alt="Capipepo">
+            </label>
+    
+            <input type="radio" name="mascota" id="Ratigueya">
+            <label class="tarjeta-de-mokepon" for="Ratigueya">
+                <p>Ratigueya</p>
+                <img src="/Src/assets/mokepons_mokepon_ratigueya_attack.webp" alt="Ratigueya">
+            </label>
+    
+            <input type="radio" name="mascota" id="Langostelvis">
+            <label class="tarjeta-de-mokepon" for="Langostelvis">
+                <p>Langostelvis</p>
+                <img src="/Src/assets/mokepons_mokepon_capipepo_attack.webp" alt="Langostelvis">
+            </label>
+    
+            <input type="radio" name="mascota" id="Tucapalma">
+            <label class="tarjeta-de-mokepon" for="Tucapalma">
+                <p>Tucapalma</p>
+                <img src="/Src/assets/mokepons_mokepon_hipodoge_attack.webp" alt="Tucapalma">
+            </label>
+    
+            <input type="radio" name="mascota" id="Pydos">
+            <label class="tarjeta-de-mokepon" for="Pydos">
+                <p>Pydos</p>
+                <img src="/Src/assets/mokepons_mokepon_ratigueya_attack.webp" alt="Pydos">
+            </label>
+        </div>
+
+        <button id="btn-mascota-jugador">Seleccionar</button>
+    </section>
+
+    <section id="seleccionar-ataque">
+        <h1 class="titulo">Mokepon! 🌱, 🔥, 💧</h1>
+        <h2 class="subtitulo">Elige tu ataque:</h2>
+        <div id="botones-de-ataque">
+            <button id="btn-fuego" class="btn-atk">Fuego 🔥</button>
+            <button id="btn-agua" class="btn-atk">Agua 💧</button>
+            <button id="btn-planta" class="btn-atk">Planta 🌱</button>
+        </div>
+        <div id="mensajes">
+            <p id="resultado">Comienza la batalla</p>
+            <section id="reiniciar">
+                <button id="btn-reiniciar">Reiniciar</button>
+            </section>
+        </div>
+        <div class="ataques">
+            <div class="ataques-mensajes">
+                <div id="mascota-jugador"></div>
+                <div id="mascota-jugador-vida">3</div>
+                <div id="ataque-jugador"></div>
+            </div>
+            <div class="ataques-mensajes">
+                <div id="mascota-rival"></div>
+                <div id="mascota-rival-vida">3</div>
+                <div id="ataque-enemigo"></div>
+            </div>
+        </div>
+    </section>
+    <script src="./Src/app.js"></script>
+</body>
+</html>
