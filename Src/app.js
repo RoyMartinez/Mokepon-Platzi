@@ -34,11 +34,28 @@ const botonFuego=document.getElementById('btn-fuego');
 const botonAgua=document.getElementById('btn-agua');
 const botonPlanta=document.getElementById('btn-planta');
 
-let ataqueJugador = ''
-let ataqueRival = ''
-let resultadoCombate = ''
-let vidasMascotaJugador = 3
-let vidasMascotaRival = 3
+const Mokepones = [];
+let ataqueJugador = '';
+let ataqueRival = '';
+let resultadoCombate = '';
+let vidasMascotaJugador = 3;
+let vidasMascotaRival = 3;
+
+class Mokepon
+{
+    constructor(nombre, foto, vida){
+        this._nombre = nombre
+        this._foto = foto
+        this._vida = vida
+    }
+}
+
+let Hipodoge = new Mokepon('Hipodoge','/Src/assets/mokepons_mokepon_capipepo_attack.webp',3);
+let Capipepo = new Mokepon('Capipepo','/Src/assets/mokepons_mokepon_hipodoge_attack.webp',3);
+let Ratigueya = new Mokepon('Ratigueya','/Src/assets/mokepons_mokepon_ratigueya_attack.webp',3);
+
+Mokepones.push(Hipodoge,Capipepo,Ratigueya);
+
 
 const dataAtaques = [
     {
