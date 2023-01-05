@@ -41,39 +41,89 @@ let resultadoCombate = '';
 let vidasMascotaJugador = 3;
 let vidasMascotaRival = 3;
 
+
+const dataAtaques = [
+    {
+        Id:1,
+        BtnId:'btn-fuego',
+        Ataque:'Fuego 🔥',
+        FuerteContra:'Planta 🌱'
+    },
+    {
+        Id:2,
+        BtnId:'btn-agua',
+        Ataque:'Agua 💧',
+        FuerteContra:'Fuego 🔥'
+    },
+    {
+        Id:3,
+        BtnId:'btn-planta',
+        Ataque:'Planta 🌱',
+        FuerteContra:'Agua 💧'
+    }
+]
+
 class Mokepon
 {
     constructor(nombre, foto, vida){
         this._nombre = nombre
         this._foto = foto
         this._vida = vida
+        this.ataques = []
+    }
+
+    get nombre(){
+        return this._nombre
+    }
+    set nombre(nombre){
+       this._nombre = nombre
+    }
+
+    get foto(){
+        return this._foto
+    }
+    set foto(foto){
+       this._foto = foto
+    }
+
+    get vida(){
+        return this._nombre
+    }
+    set vida(vida){
+       this._vida = vida
     }
 }
 
+let Ratigueya = new Mokepon('Ratigueya','/Src/assets/mokepons_mokepon_ratigueya_attack.webp',3);
 let Hipodoge = new Mokepon('Hipodoge','/Src/assets/mokepons_mokepon_capipepo_attack.webp',3);
 let Capipepo = new Mokepon('Capipepo','/Src/assets/mokepons_mokepon_hipodoge_attack.webp',3);
-let Ratigueya = new Mokepon('Ratigueya','/Src/assets/mokepons_mokepon_ratigueya_attack.webp',3);
+
+Ratigueya.ataques.push(
+    dataAtaques[0],
+    dataAtaques[0],
+    dataAtaques[0],
+    dataAtaques[1],
+    dataAtaques[2],
+)
+Hipodoge.ataques.push(
+    dataAtaques[1],
+    dataAtaques[1],
+    dataAtaques[1],
+    dataAtaques[0],
+    dataAtaques[2],
+)
+Capipepo.ataques.push(
+    dataAtaques[2],
+    dataAtaques[2],
+    dataAtaques[2],
+    dataAtaques[1],
+    dataAtaques[0],
+)
+
+console.log(Hipodoge)
 
 Mokepones.push(Hipodoge,Capipepo,Ratigueya);
 
-
-const dataAtaques = [
-    {
-        Id:1,
-        Ataque:'Fuego 🔥',
-        FuerteContra:'Planta 🌱'
-    },
-    {
-        Id:2,
-        Ataque:'Agua 💧',
-        FuerteContra:'Fuego 🔥'
-    },
-    {
-        Id:3,
-        Ataque:'Planta 🌱',
-        FuerteContra:'Agua 💧'
-    }
-]
 
 function start ()
 {
