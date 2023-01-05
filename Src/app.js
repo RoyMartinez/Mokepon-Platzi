@@ -1,38 +1,38 @@
 /*Funcion Start */
-const seleccionarAtaque = document.getElementById('seleccionar-ataque')
-const reiniciar = document.getElementById('reiniciar')
-const mascotaJugador = document.getElementById('btn-mascota-jugador')
-const btnFuego = document.getElementById('btn-fuego')
-const btnAgua = document.getElementById('btn-agua')
-const btnPlanta = document.getElementById('btn-planta')
-const btnReinicio = document.getElementById('btn-reiniciar')
+const seleccionarAtaque = document.getElementById('seleccionar-ataque');
+const reiniciar = document.getElementById('reiniciar');
+const mascotaJugador = document.getElementById('btn-mascota-jugador');
+const btnFuego = document.getElementById('btn-fuego');
+const btnAgua = document.getElementById('btn-agua');
+const btnPlanta = document.getElementById('btn-planta');
+const btnReinicio = document.getElementById('btn-reiniciar');
 
 /*Funcion Seleccionar Mascota Jugador */
-const inputhipodoge = document.getElementById('Hipodoge')
-const inputcapipepo = document.getElementById('Capipepo')
-const inputratigueya = document.getElementById('Ratigueya')
-const inputlangostelvis = document.getElementById('Langostelvis')
-const inputtucapalma = document.getElementById('Tucapalma')
-const inputhipydos = document.getElementById('Pydos')
-const spanMascotaJugador = document.getElementById('mascota-jugador')
-const seleccionarMascota = document.getElementById('seleccionar-mascota')
+const inputhipodoge = document.getElementById('Hipodoge');
+const inputcapipepo = document.getElementById('Capipepo');
+const inputratigueya = document.getElementById('Ratigueya');
+const inputlangostelvis = document.getElementById('Langostelvis');
+const inputtucapalma = document.getElementById('Tucapalma');
+const inputhipydos = document.getElementById('Pydos');
+const spanMascotaJugador = document.getElementById('mascota-jugador');
+const seleccionarMascota = document.getElementById('seleccionar-mascota');
 
 /*Funcion Seleccionar Mascota Rival */
-const spanMascotaRival = document.getElementById('mascota-rival')
+const spanMascotaRival = document.getElementById('mascota-rival');
 
 /*Funcion Resultado Pelea */
-const spanVidasJugador = document.getElementById('mascota-jugador-vida')
-const spanVidasRival = document.getElementById('mascota-rival-vida')
+const spanVidasJugador = document.getElementById('mascota-jugador-vida');
+const spanVidasRival = document.getElementById('mascota-rival-vida');
 
 /*Funcion Mensaje de pelea */
-const contenedorMensajes = document.getElementById('resultado')
-const contenedorAtaqueJugador = document.getElementById('ataque-jugador')
-const contenedorAtaqueEnemigo = document.getElementById('ataque-enemigo')
+const contenedorMensajes = document.getElementById('resultado');
+const contenedorAtaqueJugador = document.getElementById('ataque-jugador');
+const contenedorAtaqueEnemigo = document.getElementById('ataque-enemigo');
 
 /*Funcion Mensaje Final */
-const botonFuego=document.getElementById('btn-fuego')
-const botonAgua=document.getElementById('btn-agua')
-const botonPlanta=document.getElementById('btn-planta')
+const botonFuego=document.getElementById('btn-fuego');
+const botonAgua=document.getElementById('btn-agua');
+const botonPlanta=document.getElementById('btn-planta');
 
 let ataqueJugador = ''
 let ataqueRival = ''
