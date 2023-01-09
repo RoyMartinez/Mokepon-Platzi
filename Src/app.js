@@ -118,8 +118,7 @@ Capipepo.ataques.push(
 Mokepones.push(Hipodoge,Capipepo,Ratigueya);
 
 
-function start ()
-{
+function start (){
     //ocultamos las secciones posteriores de nuestro juego
     reiniciar.style.display = 'none';
     seleccionarAtaque.style.display = 'none';
@@ -150,8 +149,7 @@ function reiniciarPelea(){
     window.location.reload()
 }
 
-function seleccionarMascotaJugador()
-{
+function seleccionarMascotaJugador(){
     if(!inputDeMokepones.find(input => input.checked)){
         alert('no has seleccionado una mascota')
         return
@@ -164,20 +162,9 @@ function seleccionarMascotaJugador()
     seleccionarMascota.style.display = 'none'
 }
 
-function seleccionarMascotaRival()
-{
-    let seleccion = random(1,3)
-    switch (seleccion) {
-        case 1:
-            spanMascotaRival.innerHTML='Hipodoge'
-            break
-        case 2:
-            spanMascotaRival.innerHTML='Capipepo'
-            break
-        case 3:
-            spanMascotaRival.innerHTML='Ratigueya'
-            break
-    }
+function seleccionarMascotaRival(){
+    let seleccion = random(0,Mokepones.length-1)
+    spanMascotaRival.innerHTML = Mokepones[seleccion].nombre
 }
 
 function random(min, max) {
