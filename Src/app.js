@@ -9,12 +9,6 @@ const btnPlanta = document.getElementById('btn-planta');
 const btnReinicio = document.getElementById('btn-reiniciar');
 
 /*Funcion Seleccionar Mascota Jugador */
-const inputhipodoge = document.getElementById('Hipodoge');
-const inputcapipepo = document.getElementById('Capipepo');
-const inputratigueya = document.getElementById('Ratigueya');
-const inputlangostelvis = document.getElementById('Langostelvis');
-const inputtucapalma = document.getElementById('Tucapalma');
-const inputhipydos = document.getElementById('Pydos');
 const spanMascotaJugador = document.getElementById('mascota-jugador');
 const seleccionarMascota = document.getElementById('seleccionar-mascota');
 
@@ -36,13 +30,13 @@ const botonAgua=document.getElementById('btn-agua');
 const botonPlanta=document.getElementById('btn-planta');
 
 const Mokepones = [];
+const inputDeMokepones = [];
 let opcionDeMokepones='';
 let ataqueJugador = '';
 let ataqueRival = '';
 let resultadoCombate = '';
 let vidasMascotaJugador = 3;
 let vidasMascotaRival = 3;
-
 
 const dataAtaques = [
     {
@@ -130,17 +124,20 @@ function start ()
     reiniciar.style.display = 'none';
     seleccionarAtaque.style.display = 'none';
 
+    //se crean las tarjetas de mascotas seleccionables
     Mokepones.forEach((mokepon)=>{
-        opcionDeMokepones += `
+        contenedorMokepones.innerHTML += `
         <input type="radio" name="mascota" id=${mokepon.nombre}>
         <label class="tarjeta-de-mokepon" for=${mokepon.nombre}>
             <p>${mokepon.nombre}</p>
             <img src=${mokepon.foto} alt=${mokepon.nombre}>
         </label>
         `
-        contenedorMokepones.innerHTML=opcionDeMokepones;
     });
-
+    //una vez creadas y siendo parte del DOM ya podemos asignarlo al arreglo de inputs de Mokepones
+    Mokepones.forEach((mokepon)=>{
+        inputDeMokepones.push(document.getElementById(mokepon.nombre));
+    })
     //Asignamos los Eventos a nuestros elementos seleccionados del DOM
     mascotaJugador.addEventListener('click',seleccionarMascotaJugador)   
     btnFuego.addEventListener('click',()=> setAtaque(1))
@@ -155,37 +152,21 @@ function reiniciarPelea(){
 
 function seleccionarMascotaJugador()
 {
-    if(inputhipodoge.checked){
-        spanMascotaJugador.innerHTML='Hipodoge'
-    }
-    else if(inputcapipepo.checked){
-        spanMascotaJugador.innerHTML='Capipepo'
-    }
-    else if(inputratigueya.checked){
-        spanMascotaJugador.innerHTML='Ratigueya'
-    }
-    else if(inputlangostelvis.checked){
-        spanMascotaJugador.innerHTML='Langostelvis'
-    }
-    else if(inputtucapalma.checked){
-        spanMascotaJugador.innerHTML='Tucapalma'
-    }
-    else if(inputhipydos.checked){
-        spanMascotaJugador.innerHTML='Pydos'
-    }
-    else{
+    if(!inputDeMokepones.find(input => input.checked)){
         alert('no has seleccionado una mascota')
         return
     }
+    spanMascotaJugador.innerHTML=inputDeMokepones.find(input => input.checked).id;
     seleccionarMascotaRival()
-    //Mostramos la seccion de seleccionar mascota
+
+    //Mostramos la seccion de seleccionar Ataque
     seleccionarAtaque.style.display = 'flex'
     seleccionarMascota.style.display = 'none'
 }
 
 function seleccionarMascotaRival()
 {
-    let seleccion = random(1,6)
+    let seleccion = random(1,3)
     switch (seleccion) {
         case 1:
             spanMascotaRival.innerHTML='Hipodoge'
@@ -196,17 +177,7 @@ function seleccionarMascotaRival()
         case 3:
             spanMascotaRival.innerHTML='Ratigueya'
             break
-        case 4:
-            spanMascotaRival.innerHTML='Langostelvis'
-            break
-        case 5:
-            spanMascotaRival.innerHTML='Tucapalma'
-            break
-        case 6:
-            spanMascotaRival.innerHTML='Pydos'
-            break
     }
-
 }
 
 function random(min, max) {
