@@ -1,4 +1,5 @@
 /*Funcion Start */
+const contenedorMokepones = document.getElementById('opciones-de-mokepon');
 const seleccionarAtaque = document.getElementById('seleccionar-ataque');
 const reiniciar = document.getElementById('reiniciar');
 const mascotaJugador = document.getElementById('btn-mascota-jugador');
@@ -35,6 +36,7 @@ const botonAgua=document.getElementById('btn-agua');
 const botonPlanta=document.getElementById('btn-planta');
 
 const Mokepones = [];
+let opcionDeMokepones='';
 let ataqueJugador = '';
 let ataqueRival = '';
 let resultadoCombate = '';
@@ -104,24 +106,21 @@ Ratigueya.ataques.push(
     dataAtaques[0],
     dataAtaques[1],
     dataAtaques[2],
-)
+);
 Hipodoge.ataques.push(
     dataAtaques[1],
     dataAtaques[1],
     dataAtaques[1],
     dataAtaques[0],
     dataAtaques[2],
-)
+);
 Capipepo.ataques.push(
     dataAtaques[2],
     dataAtaques[2],
     dataAtaques[2],
     dataAtaques[1],
     dataAtaques[0],
-)
-
-console.log(Hipodoge)
-
+);
 Mokepones.push(Hipodoge,Capipepo,Ratigueya);
 
 
@@ -130,6 +129,17 @@ function start ()
     //ocultamos las secciones posteriores de nuestro juego
     reiniciar.style.display = 'none';
     seleccionarAtaque.style.display = 'none';
+
+    Mokepones.forEach((mokepon)=>{
+        opcionDeMokepones += `
+        <input type="radio" name="mascota" id=${mokepon.nombre}>
+        <label class="tarjeta-de-mokepon" for=${mokepon.nombre}>
+            <p>${mokepon.nombre}</p>
+            <img src=${mokepon.foto} alt=${mokepon.nombre}>
+        </label>
+        `
+        contenedorMokepones.innerHTML=opcionDeMokepones;
+    });
 
     //Asignamos los Eventos a nuestros elementos seleccionados del DOM
     mascotaJugador.addEventListener('click',seleccionarMascotaJugador)   
