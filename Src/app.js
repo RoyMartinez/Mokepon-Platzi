@@ -1,11 +1,9 @@
 /*Funcion Start */
 const contenedorMokepones = document.getElementById('opciones-de-mokepon');
+const contenedorAtaques = document.getElementById('botones-de-ataque');
 const seleccionarAtaque = document.getElementById('seleccionar-ataque');
 const reiniciar = document.getElementById('reiniciar');
 const mascotaJugador = document.getElementById('btn-mascota-jugador');
-const btnFuego = document.getElementById('btn-fuego');
-const btnAgua = document.getElementById('btn-agua');
-const btnPlanta = document.getElementById('btn-planta');
 const btnReinicio = document.getElementById('btn-reiniciar');
 
 /*Funcion Seleccionar Mascota Jugador */
@@ -97,23 +95,20 @@ let Capipepo = new Mokepon('Capipepo','/Src/assets/mokepons_mokepon_hipodoge_att
 Ratigueya.ataques.push(
     dataAtaques[0],
     dataAtaques[0],
-    dataAtaques[0],
     dataAtaques[1],
-    dataAtaques[2],
+    dataAtaques[2]
 );
 Hipodoge.ataques.push(
     dataAtaques[1],
     dataAtaques[1],
-    dataAtaques[1],
     dataAtaques[0],
-    dataAtaques[2],
+    dataAtaques[2]
 );
 Capipepo.ataques.push(
     dataAtaques[2],
     dataAtaques[2],
-    dataAtaques[2],
-    dataAtaques[1],
     dataAtaques[0],
+    dataAtaques[1]
 );
 Mokepones.push(Hipodoge,Capipepo,Ratigueya);
 
@@ -139,9 +134,6 @@ function start (){
     })
     //Asignamos los Eventos a nuestros elementos seleccionados del DOM
     mascotaJugador.addEventListener('click',seleccionarMascotaJugador)   
-    btnFuego.addEventListener('click',()=> setAtaque(1))
-    btnAgua.addEventListener('click',()=>setAtaque(2))
-    btnPlanta.addEventListener('click',()=>setAtaque(3))  
     btnReinicio.addEventListener('click',reiniciarPelea)
 }
 
@@ -150,16 +142,31 @@ function reiniciarPelea(){
 }
 
 function seleccionarMascotaJugador(){
-    if(!inputDeMokepones.find(input => input.checked)){
+    console.log(inputDeMokepones)
+    let MascotaJugadorSeleccionada = inputDeMokepones.find(input => input.checked);
+    if(!MascotaJugadorSeleccionada){
         alert('no has seleccionado una mascota')
         return
     }
-    spanMascotaJugador.innerHTML=inputDeMokepones.find(input => input.checked).id;
-    seleccionarMascotaRival()
+    console.log(MascotaJugadorSeleccionada.id);
+    spanMascotaJugador.innerHTML = MascotaJugadorSeleccionada.id
+    renderizarAtaquesMokepon(Mokepones.find( mokepon => mokepon.nombre == MascotaJugadorSeleccionada.id)?.ataques);
 
+    seleccionarMascotaRival()
     //Mostramos la seccion de seleccionar Ataque
     seleccionarAtaque.style.display = 'flex'
     seleccionarMascota.style.display = 'none'
+}
+
+function renderizarAtaquesMokepon(ataques){
+    if(!ataques){
+        alert('El mokepon no tiene ataques')
+        return
+    }
+    //se crean los ataques del mokepon
+    ataques.forEach((ataque)=>{
+        contenedorAtaques.innerHTML += `<button class="btn-atk" onClick="setAtaque(${ataque.Id})">${ataque.Ataque}</button>`
+    });
 }
 
 function seleccionarMascotaRival(){
@@ -226,9 +233,7 @@ function crearMensajeDePelea(){
 function crearMensajeFinal(){
     //Deshabilitamos todos los botones
     reiniciar.style.display = 'flex'
-    botonFuego.disabled=true
-    botonAgua.disabled=true
-    botonPlanta.disabled=true
+    contenedorAtaques.style.display = 'none'
     //Creamos el mensaje final
     let mensajeresultado = ``
     mensajeresultado = vidasMascotaRival < 1 ? "Tu mascota Gano" :"La mascota Rival Gano"
