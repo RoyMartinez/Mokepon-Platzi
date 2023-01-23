@@ -155,6 +155,8 @@ function seleccionarMascotaJugador(){
     seleccionarMascotaRival()
     //Mostramos la seccion de seleccionar Ataque
     seleccionarAtaque.style.display = 'flex'
+    seleccionarAtaque.style.flexDirection = 'column';
+    seleccionarAtaque.style.alignItems= 'center';
     seleccionarMascota.style.display = 'none'
 }
 
