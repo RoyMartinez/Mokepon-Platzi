@@ -2,6 +2,10 @@
 const contenedorMokepones = document.getElementById('opciones-de-mokepon');
 const contenedorAtaques = document.getElementById('botones-de-ataque');
 const seleccionarAtaque = document.getElementById('seleccionar-ataque');
+const sectionVerMapa = document.getElementById('ver-mapa');
+const mapa = document.getElementById('mapa');
+
+
 const reiniciar = document.getElementById('reiniciar');
 const mascotaJugador = document.getElementById('btn-mascota-jugador');
 const btnReinicio = document.getElementById('btn-reiniciar');
@@ -35,6 +39,7 @@ let ataqueRival = '';
 let resultadoCombate = '';
 let vidasMascotaJugador = 3;
 let vidasMascotaRival = 3;
+let lienzo = mapa.getContext("2d");
 
 const dataAtaques = [
     {
@@ -115,6 +120,7 @@ Mokepones.push(Hipodoge,Capipepo,Ratigueya);
 
 function start (){
     //ocultamos las secciones posteriores de nuestro juego
+    sectionVerMapa.style.display = 'none';
     reiniciar.style.display = 'none';
     seleccionarAtaque.style.display = 'none';
 
@@ -142,21 +148,27 @@ function reiniciarPelea(){
 }
 
 function seleccionarMascotaJugador(){
-    console.log(inputDeMokepones)
     let MascotaJugadorSeleccionada = inputDeMokepones.find(input => input.checked);
     if(!MascotaJugadorSeleccionada){
         alert('no has seleccionado una mascota')
         return
     }
-    console.log(MascotaJugadorSeleccionada.id);
     spanMascotaJugador.innerHTML = MascotaJugadorSeleccionada.id
     renderizarAtaquesMokepon(Mokepones.find( mokepon => mokepon.nombre == MascotaJugadorSeleccionada.id)?.ataques);
 
     seleccionarMascotaRival()
     //Mostramos la seccion de seleccionar Ataque
-    seleccionarAtaque.style.display = 'flex'
-    seleccionarAtaque.style.flexDirection = 'column';
-    seleccionarAtaque.style.alignItems= 'center';
+    sectionVerMapa.style.display = 'flex';
+    lienzo.fillRect(5,15,20,40);
+    let imagenCapipepo = new Image();
+    imagenCapipepo.src = Capipepo.foto
+    lienzo.drawImage(
+        imagenCapipepo,
+        20,40,100,100
+    )
+    // seleccionarAtaque.style.display = 'flex';
+    // seleccionarAtaque.style.flexDirection = 'column';
+    // seleccionarAtaque.style.alignItems= 'center';
     seleccionarMascota.style.display = 'none'
 }
 
