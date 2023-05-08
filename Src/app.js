@@ -5,6 +5,8 @@ const contenedorAtaques = document.getElementById('botones-de-ataque');
 const seleccionarAtaque = document.getElementById('seleccionar-ataque');
 const sectionVerMapa = document.getElementById('ver-mapa');
 const mapa = document.getElementById('mapa');
+mapa.width = 800
+mapa.height = 600
 
 
 const reiniciar = document.getElementById('reiniciar');
@@ -76,7 +78,6 @@ class Mokepon
         this.x = 20
         this.y = 20
     }
-
     get nombre(){
         return this._nombre
     }
@@ -102,7 +103,8 @@ class Mokepon
 let Ratigueya = new Mokepon('Ratigueya','/Src/assets/mokepons_mokepon_ratigueya_attack.webp',3);
 let Hipodoge = new Mokepon('Hipodoge','/Src/assets/mokepons_mokepon_hipodoge_attack.webp',3);
 let Capipepo = new Mokepon('Capipepo','/Src/assets/mokepons_mokepon_capipepo_attack.webp',3);
-
+let imgMap = new Image()
+imgMap.src = '/Src/assets/mapa.webp'
 Ratigueya.ataques.push(
     dataAtaques[0],
     dataAtaques[0],
@@ -147,30 +149,35 @@ function start (){
     //Asignamos los Eventos a nuestros elementos seleccionados del DOM
     mascotaJugador.addEventListener('click',seleccionarMascotaJugador)   
     btnReinicio.addEventListener('click',reiniciarPelea)
-    window.onkeypress = mueveMokepon
+    window.addEventListener('keydown', mueveMokepon)
 }
 
 function mueveMokepon(e){
     if(sectionVerMapa.style.display == 'none') return
-    switch (e.keyCode){
-        case 119:
+    switch (e.key){
+        case 'ArrowUp':
             mokepon.y-=cantidadMovimiento
             break;
-        case 115:
+        case 'ArrowDown':
             mokepon.y+=cantidadMovimiento
             break;
-        case 97:
+        case 'ArrowLeft':
             mokepon.x-=cantidadMovimiento
             break;
-        case 100:
+        case 'ArrowRight':
             mokepon.x+=cantidadMovimiento
             break;
     }    
-    pintarMokepon()
+    pintarMapa()
 }
 
-function pintarMokepon(){
+function pintarMapa(){
     lienzo.clearRect(0, 0, mapa.width, mapa.height);
+    lienzo.drawImage(
+        imgMap,
+        0,0,
+        mapa.width,mapa.height
+    )
     lienzo.drawImage(
         mokepon.image,
         mokepon.x,
@@ -197,7 +204,7 @@ function seleccionarMascotaJugador(){
     seleccionarMascotaRival()
     //Mostramos la seccion de seleccionar Ataque
     sectionVerMapa.style.display = 'flex'
-    pintarMokepon()
+    pintarMapa()
     // seleccionarAtaque.style.display = 'flex';
     // seleccionarAtaque.style.flexDirection = 'column';
     // seleccionarAtaque.style.alignItems= 'center';
